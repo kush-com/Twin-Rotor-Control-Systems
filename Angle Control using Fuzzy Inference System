@@ -1,0 +1,41 @@
+[System]
+Name='FLC_thetaControl'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=4
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='theta'
+Range=[-1 1]
+NumMFs=2
+MF1='neg':'gbellmf',[0.416 2.5 -0.784696405919662]
+MF2='pos':'gbellmf',[0.421 2.5 0.818124735729387]
+
+[Input2]
+Name='theta_dot'
+Range=[-1 1]
+NumMFs=2
+MF1='neg':'gbellmf',[0.449 2.5 -0.815604651162791]
+MF2='pos':'gbellmf',[0.449 2.5 0.858818604651163]
+
+[Output1]
+Name='output1'
+Range=[-10 10]
+NumMFs=4
+MF1='negS':'gbellmf',[0.396 2.44 -0.745583509513742]
+MF2='posS':'gbellmf',[0.396 2.44 1.11486511627907]
+MF3='negL':'gauss2mf',[0.603 -6.05534945198342 0.603 -3.37]
+MF4='posL':'gauss2mf',[0.603 3.79700845665962 0.603 6.48200845665962]
+
+[Rules]
+1 1, 4 (1) : 1
+2 1, 2 (1) : 1
+1 2, 1 (1) : 1
+2 2, 3 (1) : 1
